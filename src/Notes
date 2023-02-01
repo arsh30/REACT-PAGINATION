@@ -53,3 +53,36 @@ START PAGINATION CONCEPT ->
 -----------------------------------------------------------?
 
 FUNCTIONALITY ->  TAKI AGR KISI PR CLICK KRE TOH VO FETCH KRLE UDR SE
+
+    {/*  ADD PAGINATION -> BOTTOM BAR */}
+      {products.length > 0 && (
+        <div className="pagination">
+          {/* hello, so idr button honge 3 prev, pages, next, so 3 span 
+          press window key + semicolon - toh open emojis*/}
+          <span onClick={() => selectedPageHandler(pageNo - 1)}>◀</span>
+          {/* printing middle no how many number we have, suppose 100 products /10
+          = 10 pages]*/}
+          {[...Array(products.length / 10)].map((_, index) => {
+            return (
+              <span
+                className={pageNo === index + 1 ? "pagination__selected" : ""}
+                onClick={() => selectedPageHandler(index + 1)}
+                key={index}
+              >
+                {index + 1}
+              </span>
+            );
+          })}
+          <span onClick={() => selectedPageHandler(pageNo + 1)}>▶</span>
+        </div>
+
+------------------------------------------------------------>
+
+QUES ) INTERVIEW CAN ASK THE QUES IN OTHER WAY ALSO 
+SOL) We normally have an API, just they can ask give me 10 products of this page and 
+skip prvs ones, means in query we have "limit=10&skip=10" so in this case 
+11 se 20 dedo and prvs 10 hatado
+
+- so 1 usestate lenge for total no of pages, bcoz ab hme nhi pta ki kitne pages honge
+
+
